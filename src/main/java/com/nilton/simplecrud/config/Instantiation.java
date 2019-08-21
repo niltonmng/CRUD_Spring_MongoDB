@@ -11,7 +11,7 @@ import com.nilton.simplecrud.domain.User;
 import com.nilton.simplecrud.repository.UserRepository;
 
 @Configuration
-public class Instantiation implements CommandLineRunner{
+public class Instantiation implements CommandLineRunner { // permite que a nossa base de dados inicie com as specs definidas por nós
 
 	
 	@Autowired
