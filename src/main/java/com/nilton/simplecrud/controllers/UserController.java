@@ -58,13 +58,12 @@ public class UserController {
 		return ResponseEntity.created(uri).build();
 	}
 	
-	@RequestMapping(value="/{id}", method=RequestMethod.POST)
+	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
  	public ResponseEntity<UserDTO> update(@PathVariable String id, @RequestBody UserDTO objDto) {
-		User obj = service.findById(id);
-		obj.setEmail(objDto.getEmail());
-		obj.setName(objDto.getName());
+		User obj = service.fromDtoToUser(objDto);
+		obj.setId(id);
 		obj = service.update(obj);
-		return ResponseEntity.ok().body(new UserDTO(obj));
+		return ResponseEntity.noContent().build();
 	}
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.DELETE)

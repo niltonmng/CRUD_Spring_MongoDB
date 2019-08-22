@@ -39,10 +39,18 @@ public class UserService {
 		 return new User(obj.getId(), obj.getName(), obj.getEmail());
 	}
 	
-	public User update(User user) {
-		return repo.save(user);
+	public User update(User obj) {
+		User newObj = findById(obj.getId());
+		updateData(newObj, obj);
+		return repo.save(newObj);
 	}
 	
+	private void updateData(User newObj, User obj) {
+		newObj.setName(obj.getName());
+		newObj.setEmail(obj.getEmail());
+		
+	}
+
 	public void delete(String id) {
 		findById(id);// fazemos isso para tratar a exception de caso nao exista
 		repo.deleteById(id);
