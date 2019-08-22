@@ -2,10 +2,12 @@ package com.nilton.simplecrud.controllers;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,7 +31,6 @@ public class UserController {
 		return ResponseEntity.ok().body(listDto);
 	}
 	
-	
 	private List<UserDTO> transform(List<User> list) {
 		List<UserDTO> output = new ArrayList<UserDTO>();
 		for (User user : list) {
@@ -39,5 +40,10 @@ public class UserController {
 		return output;
 	}
 	
+	@RequestMapping(value="/{id}", method=RequestMethod.GET)
+ 	public ResponseEntity<UserDTO> findById(@PathVariable String id) { // Pathvariable indica que o id passado como parametro casa com o da url
+		User obj = service.findById(id);
+		return ResponseEntity.ok().body(new UserDTO(obj));
+	}
 
 }
