@@ -30,11 +30,11 @@ public class UserController {
 	public ResponseEntity<List<UserDTO>> findAll(){
 		List<User> list = service.findAll(); // isto permanece, pois temos que carregar normalmente a lista de users
 //		List<UserDTO> listDto = list.stream().map(user -> new UserDTO(user)).collect(Collectors.toList());
-		List<UserDTO> listDto = this.transform(list);
-		return ResponseEntity.ok().body(listDto);
+		List<UserDTO> listDto = this.transformListUserDtoToListUser(list);
+		return ResponseEntity.ok().body(listDto); // response entity são as respostas padrao http
 	}
 	
-	private List<UserDTO> transform(List<User> list) {
+	private List<UserDTO> transformListUserDtoToListUser(List<User> list) {
 		List<UserDTO> output = new ArrayList<UserDTO>();
 		for (User user : list) {
 			UserDTO current = new UserDTO(user);
@@ -56,6 +56,21 @@ public class UserController {
 		obj = service.insert(obj);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri(); // colocamos um cabeçalho com a url do novo recurso criado, isso é uma boa prática, para isso usamos a linha 57, do spring.
 		return ResponseEntity.created(uri).build();
+	}
+	
+	@RequestMapping(value="/{id}", method=RequestMethod.POST)
+ 	public ResponseEntity<UserDTO> update(@PathVariable String id, @RequestBody UserDTO objDto) {
+		User obj = service.findById(id);
+		obj.setEmail(objDto.getEmail());
+		obj.setName(objDto.getName());
+		obj = service.update(obj);
+		return ResponseEntity.ok().body(new UserDTO(obj));
+	}
+	
+	@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
+ 	public ResponseEntity<Void> delete(@PathVariable String id) {
+		service.delete(id);
+		return ResponseEntity.noContent().build();
 	}
 
 }

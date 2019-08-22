@@ -38,5 +38,14 @@ public class UserService {
 	public User fromDtoToUser(UserDTO obj) {
 		 return new User(obj.getId(), obj.getName(), obj.getEmail());
 	}
+	
+	public User update(User user) {
+		return repo.save(user);
+	}
+	
+	public void delete(String id) {
+		findById(id);// fazemos isso para tratar a exception de caso nao exista
+		repo.deleteById(id);
+	}
 
 }
