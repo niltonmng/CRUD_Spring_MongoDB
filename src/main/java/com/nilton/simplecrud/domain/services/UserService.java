@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.nilton.simplecrud.domain.User;
 import com.nilton.simplecrud.domain.services.exception.ObjectNotFoundException;
+import com.nilton.simplecrud.dto.UserDTO;
 import com.nilton.simplecrud.repository.UserRepository;
 
 @Service
@@ -30,8 +31,12 @@ public class UserService {
 		return user.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado")	);
 	}
 	
-	public User post(User user) {
+	public User insert(User user) {
 		return repo.insert(user);
+	}
+	
+	public User fromDtoToUser(UserDTO obj) {
+		 return new User(obj.getId(), obj.getName(), obj.getEmail());
 	}
 
 }
