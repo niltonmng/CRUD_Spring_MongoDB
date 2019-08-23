@@ -29,7 +29,7 @@ public class Instantiation implements CommandLineRunner { // permite que a nossa
 	public void run(String... args) throws Exception {
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyy");
-		sdf.setTimeZone(TimeZone.getTimeZone("GMT")); // consideramos que está no horário de Londres, SOMOS PONTUAIS.
+		sdf.setTimeZone(TimeZone.getTimeZone("GMT")); // consideramos que está no horário de Londres.
 		
 		userRepository.deleteAll();
 		postRepository.deleteAll();

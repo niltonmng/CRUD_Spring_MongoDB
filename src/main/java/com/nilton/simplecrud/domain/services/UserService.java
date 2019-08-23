@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.nilton.simplecrud.domain.Post;
 import com.nilton.simplecrud.domain.User;
 import com.nilton.simplecrud.domain.services.exception.ObjectNotFoundException;
 import com.nilton.simplecrud.dto.UserDTO;
@@ -65,5 +66,11 @@ public class UserService {
 		findById(id);// fazemos isso para tratar a exception de caso nao exista
 		repo.deleteById(id);
 	}
+	
+	public List<Post> getPosts(String id) {
+		User u = findById(id);
+		return u.getPosts();
+	}
+	
 
 }

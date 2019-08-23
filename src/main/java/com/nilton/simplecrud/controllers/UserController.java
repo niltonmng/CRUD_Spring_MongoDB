@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.nilton.simplecrud.domain.Post;
 import com.nilton.simplecrud.domain.User;
 import com.nilton.simplecrud.domain.services.UserService;
 import com.nilton.simplecrud.dto.UserDTO;
@@ -56,6 +57,11 @@ public class UserController {
  	public ResponseEntity<Void> delete(@PathVariable String id) {
 		service.delete(id);
 		return ResponseEntity.noContent().build();
+	}
+	
+	@RequestMapping(value="/{id}/posts", method=RequestMethod.GET)
+	public ResponseEntity<List<Post>> getPosts(@PathVariable String id) {
+		return ResponseEntity.ok().body(service.getPosts(id));
 	}
 
 }
