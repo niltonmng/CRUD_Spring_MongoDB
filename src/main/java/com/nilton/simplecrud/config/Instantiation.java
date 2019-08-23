@@ -1,13 +1,16 @@
 package com.nilton.simplecrud.config;
 
 
-import java.util.Arrays;
+import java.text.SimpleDateFormat;
+import java.util.TimeZone;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 
+import com.nilton.simplecrud.domain.Post;
 import com.nilton.simplecrud.domain.User;
+import com.nilton.simplecrud.repository.PostRepository;
 import com.nilton.simplecrud.repository.UserRepository;
 
 @Configuration
@@ -17,18 +20,33 @@ public class Instantiation implements CommandLineRunner { // permite que a nossa
 	@Autowired
 	private UserRepository userRepository;
 	
+	@Autowired
+	private PostRepository postRepository;
+	
 	@Override
 	public void run(String... args) throws Exception {
 		
-		userRepository.deleteAll(); // limpa a colecao no mongodb
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyy");
+		sdf.setTimeZone(TimeZone.getTimeZone("GMT")); // consideramos que está no horário de Londres, somos pontuais.
+		
+		userRepository.deleteAll();
+		postRepository.deleteAll();
 		
 		User maria = new User(null, "Maria Brown", "maria@gmail.com"); 
 		User alex = new User(null, "Alex Green", "alex@gmail.com"); 
-		User bob = new User(null, "Bob Grey", "bob@gmail.com"); 
+		User bob = new User(null, "Bob Grey", "bob@gmail.com");
+		
+		
+		Post post1 = new Post(null, sdf.parse("23/03/2019"), "Vamos fazer uma API em Spring", "Vamos estudar, e implementar em Mongo.", maria);
+		Post post2 = new Post(null, sdf.parse("23/03/2100"), "Good Morning Sally!", "Another day in Paradise!", maria);
+		
 		
 		userRepository.save(maria);
 		userRepository.save(alex);
 		userRepository.save(bob);
+		
+		postRepository.save(post1);
+		postRepository.save(post2);
 		
 	}
 

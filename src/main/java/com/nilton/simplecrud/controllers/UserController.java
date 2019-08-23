@@ -1,10 +1,7 @@
 package com.nilton.simplecrud.controllers;
 
 import java.net.URI;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,27 +17,17 @@ import com.nilton.simplecrud.domain.services.UserService;
 import com.nilton.simplecrud.dto.UserDTO;
 
 @RestController // define que é um controller da api rest a ser construida
-@RequestMapping(value="/users") // caminho do endpoint
+@RequestMapping(value="/users") // caminho do endpoint, todas as requisições que comecam com /users vem pra este controller
 public class UserController {
 	
 	@Autowired
 	private UserService service;
 	
-	@RequestMapping(method = RequestMethod.GET) // definindo um método get para o caminho acima.
+	@RequestMapping(method = RequestMethod.GET)                              // definindo um método get para o caminho acima.
 	public ResponseEntity<List<UserDTO>> findAll(){
-		List<User> list = service.findAll(); // isto permanece, pois temos que carregar normalmente a lista de users
-//		List<UserDTO> listDto = list.stream().map(user -> new UserDTO(user)).collect(Collectors.toList());
-		List<UserDTO> listDto = this.transformListUserDtoToListUser(list);
-		return ResponseEntity.ok().body(listDto); // response entity são as respostas padrao http
-	}
-	
-	private List<UserDTO> transformListUserDtoToListUser(List<User> list) {
-		List<UserDTO> output = new ArrayList<UserDTO>();
-		for (User user : list) {
-			UserDTO current = new UserDTO(user);
-			output.add(current);
-		}
-		return output;
+		List<User> list = service.findAll();                                 // isto permanece, pois temos que carregar normalmente a lista de users
+		List<UserDTO> listDto = service.transform_listUserDto_to_listUser(list);
+		return ResponseEntity.ok().body(listDto);                            // response entity são as respostas padrao http
 	}
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
@@ -49,9 +36,8 @@ public class UserController {
 		return ResponseEntity.ok().body(new UserDTO(obj));
 	}
 	
-	
 	@RequestMapping(method=RequestMethod.POST)
- 	public ResponseEntity<Void> insert(@RequestBody UserDTO objDto) { // @requestbody pega as informacoes passadas no parametro
+ 	public ResponseEntity<Void> insert(@RequestBody UserDTO objDto) { // @requestbody pega as informacoes passadas no corpo da requisição, ou seja o objeto
 		User obj = service.fromDtoToUser(objDto);
 		obj = service.insert(obj);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri(); // colocamos um cabeçalho com a url do novo recurso criado, isso é uma boa prática, para isso usamos a linha 57, do spring.

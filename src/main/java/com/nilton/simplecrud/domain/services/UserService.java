@@ -1,5 +1,6 @@
 package com.nilton.simplecrud.domain.services;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -37,6 +38,15 @@ public class UserService {
 	
 	public User fromDtoToUser(UserDTO obj) {
 		 return new User(obj.getId(), obj.getName(), obj.getEmail());
+	}
+	
+	public List<UserDTO> transform_listUserDto_to_listUser(List<User> list) {
+		List<UserDTO> output = new ArrayList<UserDTO>();
+		for (User user : list) {
+			UserDTO current = new UserDTO(user);
+			output.add(current);
+		}
+		return output;
 	}
 	
 	public User update(User obj) {
