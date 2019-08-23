@@ -1,8 +1,11 @@
 package com.nilton.simplecrud.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "user")
@@ -16,6 +19,9 @@ public class User implements Serializable {
 	private String id;
 	private String name;
 	private String email;
+	
+	@DBRef(lazy = true) // tag que associa colecoes no mongo, fazendo referencia a objetos de outras colecoes
+	private List<Post> posts = new ArrayList<Post>(); // para ojetos associados já iniciamos as colecoes
 	
 	public User() {
 		// TODO Auto-generated constructor stub
@@ -51,6 +57,14 @@ public class User implements Serializable {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
+	public List<Post> getPosts() {
+		return posts;
+	}
+
+	public void setPosts(List<Post> posts) {
+		this.posts = posts;
+	}
 
 	@Override
 	public int hashCode() {
@@ -76,7 +90,5 @@ public class User implements Serializable {
 			return false;
 		return true;
 	}
-	
-	
 
 }
