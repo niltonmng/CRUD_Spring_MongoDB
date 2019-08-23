@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Configuration;
 
 import com.nilton.simplecrud.domain.Post;
 import com.nilton.simplecrud.domain.User;
+import com.nilton.simplecrud.dto.AuthorDTO;
 import com.nilton.simplecrud.repository.PostRepository;
 import com.nilton.simplecrud.repository.UserRepository;
 
@@ -27,7 +28,7 @@ public class Instantiation implements CommandLineRunner { // permite que a nossa
 	public void run(String... args) throws Exception {
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyy");
-		sdf.setTimeZone(TimeZone.getTimeZone("GMT")); // consideramos que está no horário de Londres, somos pontuais.
+		sdf.setTimeZone(TimeZone.getTimeZone("GMT")); // consideramos que está no horário de Londres, SOMOS PONTUAIS.
 		
 		userRepository.deleteAll();
 		postRepository.deleteAll();
@@ -36,14 +37,12 @@ public class Instantiation implements CommandLineRunner { // permite que a nossa
 		User alex = new User(null, "Alex Green", "alex@gmail.com"); 
 		User bob = new User(null, "Bob Grey", "bob@gmail.com");
 		
-		
-		Post post1 = new Post(null, sdf.parse("23/03/2019"), "Vamos fazer uma API em Spring", "Vamos estudar, e implementar em Mongo.", maria);
-		Post post2 = new Post(null, sdf.parse("23/03/2100"), "Good Morning Sally!", "Another day in Paradise!", maria);
-		
-		
 		userRepository.save(maria);
 		userRepository.save(alex);
 		userRepository.save(bob);
+		
+		Post post1 = new Post(null, sdf.parse("23/03/2019"), "Vamos fazer uma API em Spring", "Vamos estudar, e implementar em Mongo.", new AuthorDTO(maria));
+		Post post2 = new Post(null, sdf.parse("23/03/2100"), "Good Morning Sally!", "Another day in Paradise!", new AuthorDTO(maria));
 		
 		postRepository.save(post1);
 		postRepository.save(post2);
