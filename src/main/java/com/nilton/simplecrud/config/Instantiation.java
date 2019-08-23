@@ -42,7 +42,7 @@ public class Instantiation implements CommandLineRunner { // permite que a nossa
 		userRepository.save(alex);
 		userRepository.save(bob);
 		
-		Post post1 = new Post(null, sdf.parse("23/03/2019"), "Vamos fazer uma API em Spring", "Vamos estudar, e implementar em Mongo.", new AuthorDTO(maria));
+		Post post1 = new Post(null, sdf.parse("23/03/2019"), "Control to Bridge! This is Sally.", "How are you on this lovely morning?", new AuthorDTO(maria));
 		Post post2 = new Post(null, sdf.parse("23/03/2100"), "Good Morning Sally!", "Another day in Paradise!", new AuthorDTO(maria));
 		
 		postRepository.save(post1);
