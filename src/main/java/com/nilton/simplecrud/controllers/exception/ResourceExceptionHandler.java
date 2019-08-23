@@ -17,7 +17,7 @@ public class ResourceExceptionHandler {
 
 		long timestamp = System.currentTimeMillis();
 		Integer status = HttpStatus.NOT_FOUND.value();
-		String error = "Não encontrado";
+		String error = "Not Found. NGMESSAGE";
 		String message = e.getMessage();
 		String path = request.getRequestURI();
 

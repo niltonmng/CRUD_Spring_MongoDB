@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Configuration;
 import com.nilton.simplecrud.domain.Post;
 import com.nilton.simplecrud.domain.User;
 import com.nilton.simplecrud.dto.AuthorDTO;
+import com.nilton.simplecrud.dto.CommentDTO;
 import com.nilton.simplecrud.repository.PostRepository;
 import com.nilton.simplecrud.repository.UserRepository;
 
@@ -44,6 +45,13 @@ public class Instantiation implements CommandLineRunner { // permite que a nossa
 		
 		Post post1 = new Post(null, sdf.parse("23/03/2019"), "Control to Bridge! This is Sally.", "How are you on this lovely morning?", new AuthorDTO(maria));
 		Post post2 = new Post(null, sdf.parse("23/03/2100"), "Good Morning Sally!", "Another day in Paradise!", new AuthorDTO(maria));
+		
+		CommentDTO c1 = new CommentDTO("Boa viagem amigo!", sdf.parse("23/03/2019"), new AuthorDTO(alex));
+		CommentDTO c2 = new CommentDTO("Volte sempre!", sdf.parse("23/03/2019"), new AuthorDTO(alex));
+		CommentDTO c3 = new CommentDTO("Deus lhe abençõe!", sdf.parse("23/03/2019"), new AuthorDTO(alex));
+		
+		post1.getComment().addAll(Arrays.asList(c1, c2));
+		post2.getComment().addAll(Arrays.asList(c3));
 		
 		postRepository.save(post1);
 		postRepository.save(post2);

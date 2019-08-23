@@ -27,11 +27,6 @@ public class PostService {
 		return post.orElseThrow(() -> new ObjectNotFoundException("Post not found!"));
 	}
 	
-	public Post insert(Post post, String authorId) {
-		
-		return repo.insert(post);
-	}
-	
 	public void delete(String id) {
 		findById(id);
 		repo.deleteById(id);

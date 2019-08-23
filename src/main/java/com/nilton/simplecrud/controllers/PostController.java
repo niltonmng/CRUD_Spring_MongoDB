@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.nilton.simplecrud.domain.Post;
 import com.nilton.simplecrud.domain.services.PostService;
+import com.nilton.simplecrud.dto.CommentDTO;
 
 
 @RestController
@@ -26,15 +27,23 @@ public class PostController {
 		return ResponseEntity.ok().body(obj);
 	}
 	
-	
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
 	public ResponseEntity<Post> getById(@PathVariable String id) {
 		Post obj = service.findById(id);
 		return ResponseEntity.ok().body(obj);
 	}
 	
+	@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
+	public ResponseEntity<Post> delete(@PathVariable String id) {
+		service.delete(id);
+		return ResponseEntity.noContent().build();
+	}
+	
+	@RequestMapping(value="/{id}/comments", method=RequestMethod.GET)
+	public ResponseEntity<List<CommentDTO>> getComment(@PathVariable String id) {
+		Post obj = service.findById(id);
+		return ResponseEntity.ok().body(obj.getComment());
+	}
 	
 	
-	
-
 }
