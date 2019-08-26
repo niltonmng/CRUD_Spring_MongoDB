@@ -12,10 +12,22 @@ sudo apt-get install default-jdk
 sudo apt-get install -y mongodb-org
 ```
 
+* On terminal run
+
+```bash
+mongod
+```
+
 ## Downloads
 
-* STS
-* Postman
+* Edit source code with [STS](https://spring.io/tools) IDE.
+* Test application Endpoints with [Postman](https://www.getpostman.com/downloads/).
+
+## Running App
+
+* On STS IDE, open this maven project and execute as a Spring Boot App.
+* To easily explore and manipulate MongoDB data, install [Mongo Compass](https://www.mongodb.com/products/compass).
+
 
 
 ## License
