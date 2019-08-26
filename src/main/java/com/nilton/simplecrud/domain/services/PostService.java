@@ -31,6 +31,9 @@ public class PostService {
 		findById(id);
 		repo.deleteById(id);
 	}
-
+	
+	public Post insert(Post post) {
+		return repo.insert(post);
+	}
 	
 }
