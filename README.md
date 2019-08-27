@@ -1,6 +1,7 @@
 # Social Network Project
 
-Spring and mongodb development of a Social Network project.
+* Spring and mongodb development of a Social Network project.
+* [Project Specification](https://docs.google.com/document/d/1avKEbAbKpNTLZYVMpKu-oeMAN-CedXtj6D-W9G0pGbE/edit?usp=sharing)
 
 ## Installation
 
