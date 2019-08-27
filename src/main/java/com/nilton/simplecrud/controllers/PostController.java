@@ -44,6 +44,13 @@ public class PostController {
 		return ResponseEntity.ok().body(list);
 	}
 	
+	@RequestMapping(value="/bodysearch", method=RequestMethod.GET)
+	public ResponseEntity<List<Post>> getByBody(@RequestParam(value="text", defaultValue = "") String text) {
+		text = URL.decodeParam(text);
+		List<Post> list = service.findByBody(text);		
+		return ResponseEntity.ok().body(list);
+	}
+	
 	@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
 	public ResponseEntity<Post> delete(@PathVariable String id) {
 		service.delete(id);

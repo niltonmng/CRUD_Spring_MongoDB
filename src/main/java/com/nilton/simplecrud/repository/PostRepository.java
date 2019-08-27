@@ -14,4 +14,6 @@ public interface PostRepository extends MongoRepository<Post, String> {
 	// implementacao de query methods
 	// disponível em (https://docs.spring.io/spring-data/mongodb/docs/current/reference/html/#repositories.query-methods)
 	public List<Post> findByTitleContainingIgnoreCase(String text);
+	
+	public List<Post> findByBodyContainingIgnoreCase(String text);
 }

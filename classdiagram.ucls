@@ -24,7 +24,7 @@
   <class id="3" language="java" name="com.nilton.simplecrud.domain.services.PostService" project="CRUD_Spring_MongoDB" 
     file="/CRUD_Spring_MongoDB/src/main/java/com/nilton/simplecrud/domain/services/PostService.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="132" y="302"/>    
+    <position height="-1" width="-1" x="126" y="379"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -34,7 +34,7 @@
   <class id="4" language="java" name="com.nilton.simplecrud.domain.services.UserService" project="CRUD_Spring_MongoDB" 
     file="/CRUD_Spring_MongoDB/src/main/java/com/nilton/simplecrud/domain/services/UserService.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="481" y="377"/>    
+    <position height="-1" width="-1" x="507" y="374"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -44,7 +44,7 @@
   <interface id="5" language="java" name="com.nilton.simplecrud.repository.PostRepository" project="CRUD_Spring_MongoDB" 
     file="/CRUD_Spring_MongoDB/src/main/java/com/nilton/simplecrud/repository/PostRepository.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="134" y="481"/>    
+    <position height="-1" width="-1" x="174" y="584"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -64,7 +64,7 @@
   <class id="7" language="java" name="com.nilton.simplecrud.config.Instantiation" project="CRUD_Spring_MongoDB" 
     file="/CRUD_Spring_MongoDB/src/main/java/com/nilton/simplecrud/config/Instantiation.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="158" y="669"/>    
+    <position height="-1" width="-1" x="160" y="739"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -75,7 +75,7 @@
     project="CRUD_Spring_MongoDB" 
     file="/CRUD_Spring_MongoDB/src/main/java/com/nilton/simplecrud/controllers/exception/ResourceExceptionHandler.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="128" width="612" x="28" y="873"/>    
+    <position height="128" width="612" x="27" y="946"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -117,7 +117,7 @@
     project="CRUD_Spring_MongoDB" 
     file="/CRUD_Spring_MongoDB/src/main/java/com/nilton/simplecrud/domain/services/exception/ObjectNotFoundException.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="171" y="796"/>    
+    <position height="-1" width="-1" x="169" y="860"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -155,81 +155,121 @@
     </display>  
   </class>  
   <association id="16">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="17" name="service"/>      
-      <multiplicity id="18" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="19">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="20" name="service"/>      
-      <multiplicity id="21" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="22">    
-    <end type="SOURCE" refId="13" navigable="false">      
-      <attribute id="23" name="author"/>      
-      <multiplicity id="24" minimum="0" maximum="1"/>    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="17" name="author">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="18" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="15" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="25">    
-    <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="26" name="comments"/>      
-      <multiplicity id="27" minimum="0" maximum="2147483647"/>    
+  <association id="19">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="20" name="author">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="21" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="13" navigable="true"/>    
+    <end type="TARGET" refId="15" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="22">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="23" name="service">        
+        <position height="0" width="0" x="-6" y="77"/>      
+      </attribute>      
+      <multiplicity id="24" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-6" y="77"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="25">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="26" name="service">        
+        <position height="0" width="0" x="26" y="-3"/>      
+      </attribute>      
+      <multiplicity id="27" minimum="0" maximum="1">        
+        <position height="0" width="0" x="26" y="-3"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="28">    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="29" name="repo"/>      
-      <multiplicity id="30" minimum="0" maximum="1"/>    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="29" name="userRepository">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="30" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="6" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="31">    
     <end type="SOURCE" refId="11" navigable="false">      
-      <attribute id="32" name="posts"/>      
-      <multiplicity id="33" minimum="0" maximum="2147483647"/>    
+      <attribute id="32" name="posts">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="33" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="10" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="34">    
     <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="35" name="repo"/>      
-      <multiplicity id="36" minimum="0" maximum="1"/>    
+      <attribute id="35" name="repo">        
+        <position height="0" width="0" x="40" y="103"/>      
+      </attribute>      
+      <multiplicity id="36" minimum="0" maximum="1">        
+        <position height="0" width="0" x="40" y="103"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="5" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="37">    
-    <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="38" name="author"/>      
-      <multiplicity id="39" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="15" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="40">    
     <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="41" name="postRepository"/>      
-      <multiplicity id="42" minimum="0" maximum="1"/>    
+      <attribute id="38" name="postRepository">        
+        <position height="0" width="0" x="40" y="103"/>      
+      </attribute>      
+      <multiplicity id="39" minimum="0" maximum="1">        
+        <position height="0" width="0" x="40" y="103"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="5" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
+  <association id="40">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="41" name="comments">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="42" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
   <association id="43">    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="44" name="userRepository"/>      
-      <multiplicity id="45" minimum="0" maximum="1"/>    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="44" name="repo">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="45" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="6" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  

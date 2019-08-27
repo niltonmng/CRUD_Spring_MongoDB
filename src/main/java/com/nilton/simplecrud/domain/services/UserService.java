@@ -72,5 +72,13 @@ public class UserService {
 		return u.getPosts();
 	}
 	
+	
+	public List<User> findByName(String name) {
+		return repo.findByNameContainingIgnoreCase(name);
+	}
+	
+	public List<User> findByEmail(String email) {
+		return repo.findByEmailContainingIgnoreCase(email);
+	}
 
 }
