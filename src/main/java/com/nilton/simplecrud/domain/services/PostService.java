@@ -36,4 +36,8 @@ public class PostService {
 		return repo.insert(post);
 	}
 	
+	public List<Post> findByTitle(String text) {
+		return repo.findByTitleContaining(text);
+	}
+	
 }

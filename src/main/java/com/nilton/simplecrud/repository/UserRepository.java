@@ -10,4 +10,5 @@ public interface UserRepository extends MongoRepository<User, String> {
 
 	// criamos esta interface para ter acesso à api, permitindo poder criar o crud de operações necessarias a cada modelo, neste caso o User.
 	
+	
 }
