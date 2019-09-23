@@ -11,8 +11,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "user")
 public class User implements Serializable {
 
-	
-	// This is a Domain Class, first built according to the pattern used. Next to build is a Controller Class.
 	private static final long serialVersionUID = 1L;
 	
 	@Id
