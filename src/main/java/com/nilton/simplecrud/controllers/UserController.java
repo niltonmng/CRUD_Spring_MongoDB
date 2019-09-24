@@ -6,6 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,7 +37,9 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
- 	public ResponseEntity<UserDTO> findById(@PathVariable String id) { // Pathvariable indica que o id passado como parametro casa com o da url
+ 	public ResponseEntity<UserDTO> findById(@PathVariable String id, 
+ 			@AuthenticationPrincipal UserDetails ud) { // Pathvariable indica que o id passado como parametro casa com o da url
+		System.out.println(ud);
 		User obj = service.findById(id);
 		return ResponseEntity.ok().body(new UserDTO(obj));
 	}
