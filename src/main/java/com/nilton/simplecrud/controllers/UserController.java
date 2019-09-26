@@ -30,7 +30,6 @@ public class UserController {
 	private UserService service;
 	
 	@RequestMapping(method = RequestMethod.GET)                              // definindo um método get para o caminho acima.
-	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<List<UserDTO>> findAll(){
 		List<User> list = service.findAll();                                 // isto permanece, pois temos que carregar normalmente a lista de users
 		List<UserDTO> listDto = service.transform_listUserDto_to_listUser(list);
@@ -46,7 +45,6 @@ public class UserController {
 	}
 	
 	@RequestMapping(method=RequestMethod.POST)
-	@PreAuthorize("hasRole('ADMIN')")
  	public ResponseEntity<Void> insert(@RequestBody UserDTO objDto) { // @requestbody pega as informacoes passadas no corpo da requisição, ou seja o objeto
 		User obj = service.fromDtoToUser(objDto);
 		obj = service.insert(obj);
@@ -55,7 +53,6 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
-	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<UserDTO> update(@PathVariable String id, @RequestBody UserDTO objDto) {
 		User obj = service.fromDtoToUser(objDto);
 		obj.setId(id);
