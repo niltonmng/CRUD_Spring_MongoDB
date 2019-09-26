@@ -17,6 +17,13 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+/**
+ * Esta entidade tem como objetivo interceptar as requisições do tipo POST feitas com a rota /"login"
+ * e tentar autenticar um usuário. Se a autenticação for sucedida, ocorre um retorno de um JWT com a
+ * autorização no cabeçalho da resposta.
+ * @author Nilton Ginani/
+ *
+ */
 public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter {
 
 	protected JWTLoginFilter(String url, AuthenticationManager authManager) {
@@ -24,6 +31,11 @@ public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter {
 		setAuthenticationManager(authManager);
 	}
 
+	/**
+	 * Este método é quem lida com a tentativa de autenticação, onde se pega o username e password da
+	 * da requisição e se utiliza o AuthenticationManager para verificar se os dados são correspondentes
+	 * aos dados do usuário existente.
+	 */
 	@Override
 	public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
 			throws AuthenticationException, IOException, ServletException {
@@ -40,6 +52,11 @@ public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter {
 				);
 	}
 	
+	/**
+	 * Este método é responsável por enviar ao service TokenAuthenticationService o username
+	 * do usuário para que este adicione um JWT à nossa reponse. Apenas funciona caso os dados
+	 * estejam corretos.
+	 */
 	@Override
 	protected void successfulAuthentication(
 			HttpServletRequest request, 

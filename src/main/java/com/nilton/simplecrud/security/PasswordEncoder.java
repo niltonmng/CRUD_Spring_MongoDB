@@ -9,4 +9,10 @@ public class PasswordEncoder {
 		BCryptPasswordEncoder pe = new BCryptPasswordEncoder();
 		System.out.println(pe.encode("daca2019"));
 	}
+	
+	
+	public static String encode(String password) {
+		BCryptPasswordEncoder pe = new BCryptPasswordEncoder();
+		return pe.encode(password);
+	}
 }

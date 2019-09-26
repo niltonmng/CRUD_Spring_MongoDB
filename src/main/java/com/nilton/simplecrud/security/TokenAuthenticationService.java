@@ -12,6 +12,12 @@ import org.springframework.security.core.Authentication;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
+/**
+ * Esta entidade é responsável por criar e verificar nossos tokens. Nesta classe utilizamos
+ * JWT como dependencia para validar os tokens.
+ * @author Nilton Ginani
+ *
+ */
 public class TokenAuthenticationService {
 	
 	// EXPIRATION_TIME = 10 dias
@@ -20,6 +26,11 @@ public class TokenAuthenticationService {
 	static final String TOKEN_PREFIX = "Bearer";
 	static final String HEADER_STRING = "Authorization";
 	
+	/**
+	 * Este método é responsável por criar a autenticação do sistema, construindo um token JWT.
+	 * @param response
+	 * @param username
+	 */
 	static void addAuthentication(HttpServletResponse response, String username) {
 		String JWT = Jwts.builder()
 				.setSubject(username)
@@ -30,6 +41,11 @@ public class TokenAuthenticationService {
 		response.addHeader(HEADER_STRING, TOKEN_PREFIX + " " + JWT);
 	}
 	
+	/**
+	 * Este método é responsável por autenticar os tokens do sistema.
+	 * @param request
+	 * @return
+	 */
 	static Authentication getAuthentication(HttpServletRequest request) {
 		String token = request.getHeader(HEADER_STRING);
 		
