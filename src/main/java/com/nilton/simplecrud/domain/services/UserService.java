@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import com.nilton.simplecrud.domain.Post;
@@ -24,10 +25,12 @@ public class UserService {
 	@Autowired
 	private UserRepository repo;
 	
+	@Cacheable(cacheNames = "Users", key="#root.method.name")
 	public List<User> findAll() {
 		return repo.findAll();
 	}
 	
+	@Cacheable(cacheNames = "User", key="#id")
 	public User findById(String id) {
 		Optional<User> user = repo.findById(id);
 		return user.orElseThrow(() -> new ObjectNotFoundException("User not found!")	);
