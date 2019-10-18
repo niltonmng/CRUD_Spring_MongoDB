@@ -62,9 +62,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.inMemoryAuthentication()
-			.withUser("nilton").password("{noop}$2a$10$jhj1v.fybvNFg0zEsIpbp.XyL.Hi464ziqhM764HVZRelQxJK4.PG").roles("USER")
+			.withUser("nilton").password("{noop}daca2019").roles("USER")
 			.and()
-			.withUser("admin").password("{noop}$2a$10$jhj1v.fybvNFg0zEsIpbp.XyL.Hi464ziqhM764HVZRelQxJK4.PG").roles("ADMIN");
+			.withUser("admin").password("{noop}daca2019").roles("ADMIN");
 	}
 
 }
