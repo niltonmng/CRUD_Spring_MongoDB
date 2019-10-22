@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
@@ -25,17 +26,19 @@ public class UserService {
 	@Autowired
 	private UserRepository repo;
 	
-	@Cacheable(cacheNames = "Users", key="#root.method.name")
+	@Cacheable(value="user-cache", key="#root.method.name")
 	public List<User> findAll() {
 		return repo.findAll();
 	}
 	
-	@Cacheable(cacheNames = "User", key="#id")
-	public User findById(String id) {
-		Optional<User> user = repo.findById(id);
+	@CacheEvict(value="user-cache", key= "'UserCache'+#userId", beforeInvocation = true)
+	@Cacheable(value="user-cache", key= "'UserCache'+#userId")
+	public User findById(String userId) {
+		Optional<User> user = repo.findById(userId);
 		return user.orElseThrow(() -> new ObjectNotFoundException("User not found!")	);
 	}
 	
+	@CacheEvict(cacheNames = "user-cache", allEntries = true)
 	public User insert(User user) {
 		return repo.insert(user);
 	}
@@ -65,6 +68,7 @@ public class UserService {
 		
 	}
 
+	@CacheEvict(cacheNames = "user-cache", key="#id")
 	public void delete(String id) {
 		findById(id);// fazemos isso para tratar a exception de caso nao exista
 		repo.deleteById(id);
