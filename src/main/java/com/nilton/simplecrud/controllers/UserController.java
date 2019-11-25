@@ -36,6 +36,11 @@ public class UserController {
 		return ResponseEntity.ok().body(listDto);                            // response entity são as respostas padrao http
 	}
 	
+	@RequestMapping(value = "/kubernetes", method = RequestMethod.GET)
+	public ResponseEntity<String> getHello(){
+		return ResponseEntity.ok("HI, I'M WORKING WITH KUBERNETES!!!");
+	}
+	
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
  	public ResponseEntity<UserDTO> findById(@PathVariable String id, 
  			@AuthenticationPrincipal UserDetails ud) { // Pathvariable indica que o id passado como parametro casa com o da url
