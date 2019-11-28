@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: token-try-one
+  namespace: default
+secrets:
+- name: token-try-one
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: token-try-one
+  annotations:
+    kubernetes.io/service-account.name: minikube
+type: kubernetes.io/service-account-token
