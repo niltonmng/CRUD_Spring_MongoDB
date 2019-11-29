@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import com.nilton.simplecrud.dto.AuthorDTO;
 import com.nilton.simplecrud.dto.CommentDTO;
@@ -18,7 +19,7 @@ public class Post implements Serializable {
 	
 	@Id
 	private String id;
-	private Date date;
+	private DateTimeFormat date;
 	private String title;
 	private String body;
 	private AuthorDTO author;
@@ -29,7 +30,7 @@ public class Post implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Post(String id, Date date, String title, String body, AuthorDTO author) {
+	public Post(String id, DateTimeFormat date, String title, String body, AuthorDTO author) {
 		super();
 		this.id = id;
 		this.date = date;
@@ -46,11 +47,11 @@ public class Post implements Serializable {
 		this.id = id;
 	}
 
-	public Date getDate() {
+	public DateTimeFormat getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(DateTimeFormat date) {
 		this.date = date;
 	}
 
