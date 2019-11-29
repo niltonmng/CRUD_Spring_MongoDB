@@ -1,40 +1,40 @@
-package com.nilton.simplecrud.security;
+// package com.nilton.simplecrud.security;
 
-import java.io.IOException;
+// import java.io.IOException;
 
-import javax.servlet.FilterChain;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
-import javax.servlet.http.HttpServletRequest;
+// import javax.servlet.FilterChain;
+// import javax.servlet.ServletException;
+// import javax.servlet.ServletRequest;
+// import javax.servlet.ServletResponse;
+// import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.filter.GenericFilterBean;
+// import org.springframework.security.core.Authentication;
+// import org.springframework.security.core.context.SecurityContextHolder;
+// import org.springframework.web.filter.GenericFilterBean;
 
 
-/**
- * Esta classe é responsável por validar a existencia de um JWT nas requisições, 
- * com a ajuda do TokenAuthenticationService.
- * 
- * @author Nilton Ginani
- *
- */
-public class JWTAuthenticationFilter extends GenericFilterBean {
+// /**
+//  * Esta classe é responsável por validar a existencia de um JWT nas requisições, 
+//  * com a ajuda do TokenAuthenticationService.
+//  * 
+//  * @author Nilton Ginani
+//  *
+//  */
+// public class JWTAuthenticationFilter extends GenericFilterBean {
 
 	
-	/**
-	 * Este método é responsável por filtrar e validar as requisições com o JWT.
-	 */
-	@Override
-	public void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain)
-			throws IOException, ServletException {
+// 	/**
+// 	 * Este método é responsável por filtrar e validar as requisições com o JWT.
+// 	 */
+// 	@Override
+// 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain)
+// 			throws IOException, ServletException {
 		
-		Authentication authentication = TokenAuthenticationService
-				.getAuthentication((HttpServletRequest) request);
+// 		Authentication authentication = TokenAuthenticationService
+// 				.getAuthentication((HttpServletRequest) request);
 		
-		SecurityContextHolder.getContext().setAuthentication(authentication);
-		filterChain.doFilter(request, response);
-	}
+// 		SecurityContextHolder.getContext().setAuthentication(authentication);
+// 		filterChain.doFilter(request, response);
+// 	}
 
-}
+// }
