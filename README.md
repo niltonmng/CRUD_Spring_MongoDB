@@ -26,7 +26,10 @@ mongod
 * Test application Endpoints with [Postman](https://www.getpostman.com/downloads/).
 
 ## Running App
-
+```
+   ./mvnw clean package
+   ./mvn spring-boot:run
+```
 * On STS IDE, open this maven project and execute as a Spring Boot App.
 * To easily explore and manipulate MongoDB data, install [Mongo Compass](https://www.mongodb.com/products/compass).
    
